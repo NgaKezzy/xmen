@@ -16,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
     Timer(const Duration(seconds: 3), () {
       Navigator.pushNamedAndRemoveUntil(
         context,
-        Routers.homePage,
+        Routers.loginPage,
         (route) {
           return false;
         },

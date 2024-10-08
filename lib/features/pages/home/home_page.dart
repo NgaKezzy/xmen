@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:test_app/core/component/loading/loading_widget.dart';
+import 'package:test_app/core/config/app_color.dart';
 import 'package:test_app/di/dependency_injection.dart';
 import 'package:test_app/features/cubit/home_cubit.dart';
 import 'package:test_app/features/models/product.dart';
@@ -41,26 +43,23 @@ class _HomePageState extends State<HomePage> {
       },
       child: isShowLoading
           ? const Scaffold(
+              backgroundColor: AppColors.primary,
               body: Center(
                 child: LoadingWidget(),
               ),
             )
           : Scaffold(
+              backgroundColor: AppColors.primary,
               appBar: AppBar(
-                backgroundColor: const Color(0xFF01182e),
+                automaticallyImplyLeading: false,
+                backgroundColor: AppColors.primary,
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const SizedBox(
-                      width: 30,
+                    Image.asset(
+                      'assets/images/logo-xmen.png',
+                      width: 100,
                     ),
-                    const Text(
-                      'Sản phẩm',
-                      style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500),
-                    ),
+                    const Spacer(),
                     IconButton(
                       onPressed: () {
                         Navigator.pushNamed(context, Routers.cart);
@@ -69,6 +68,24 @@ class _HomePageState extends State<HomePage> {
                         Icons.shopping_cart,
                         size: 30,
                         color: Colors.white,
+                      ),
+                    ),
+                    const Gap(10),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, Routers.profilePage);
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                            image: const DecorationImage(
+                                image: AssetImage('assets/images/avatar.jpg')),
+                            border: Border.all(
+                                color: Colors.white,
+                                width: 2,
+                                style: BorderStyle.solid),
+                            borderRadius: BorderRadius.circular(8)),
                       ),
                     )
                   ],
@@ -176,9 +193,9 @@ class _HomePageState extends State<HomePage> {
           child: Container(
             height: 130,
             width: width * 0.5,
-            decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(0.2),
-              borderRadius: const BorderRadius.only(),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(),
             ),
             child: Image.asset(
               product.image,
@@ -200,8 +217,14 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(product.name),
-                    Text(product.price.toString()),
+                    Text(
+                      product.name,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      product.price.toString(),
+                      style: const TextStyle(color: Colors.white),
+                    ),
                   ],
                 ),
               ),
@@ -246,9 +269,9 @@ class _HomePageState extends State<HomePage> {
             child: Container(
               height: height * 0.16,
               width: width * 0.35,
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(0.2),
-                borderRadius: const BorderRadius.only(),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(),
               ),
               child: Image.asset(
                 product.image,
@@ -271,8 +294,14 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(product.name),
-                      Text(product.price.toString()),
+                      Text(
+                        product.name,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      Text(
+                        product.price.toString(),
+                        style: const TextStyle(color: Colors.white),
+                      ),
                     ],
                   ),
                 ),
